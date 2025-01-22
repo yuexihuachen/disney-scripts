@@ -1,0 +1,29 @@
+{
+  "name": "disney-scripts",
+  "version": "1.0.0",
+  "description": "npm scripts",
+  "main": "./index.js",
+  "module": "./index.js",
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.js"
+    }
+  },
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yuexihuachen/disney-scripts.git"
+  },
+  "keywords": [
+    "scripts"
+  ],
+  "author": "leonwang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuexihuachen/disney-scripts/issues"
+  },
+  "homepage": "https://github.com/yuexihuachen/disney-scripts#readme"
+}
