@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    /**
+    * 允许import命令默认加载没有default输出的模块。比如，打开这个设置，就可以写import React from "react";
+    */
+    "allowSyntheticDefaultImports": true,
+    /**
+    *  严格模式进行解析
+    */
+    "alwaysStrict": true,
+    /**
+    * 修复了一些 CommonJS 和 ES6 模块之间的兼容性问题。
+    */
+    "esModuleInterop": true,
+    /**
+    *设置文件名是否为大小写敏感
+    */
+    "forceConsistentCasingInFileNames": true,
+    /**
+    * 确定模块路径的算法采用 Node.js 的 CommonJS 模块算法。
+    */
+    "moduleResolution": "node",
+    /**
+    *指定编译产物的模块格式
+    */
+    "module": "CommonJS",
+    /**
+    *设置当一个表达式没有明确的类型描述、且编译器无法推断出具体类型时，是否允许将它推断为any类型。
+    */
+    "noImplicitAny": true,
+    /**
+    *设置是否要求函数任何情况下都必须返回一个值，即函数必须有return语句。
+    */
+    "noImplicitReturns": true,
+    /**
+    * 设置如果this被推断为any类型是否报错。
+    */
+    "noImplicitThis": true,
+    /**
+    *设置是否允许未使用的局部变量。
+    */
+    "noUnusedLocals": true,
+    /**
+    *设置是否允许未使用的函数参数。
+    */
+    "noUnusedParameters": true,
+    /**
+    *不可以赋值为undefined或null。
+    */
+    "strictNullChecks": false,
+    /**
+    *指定编译出来的 JavaScript 代码的 ECMAScript 版本
+    */
+    "target": "ESNext",
+    "baseUrl": "/",
+    "outDir": "dist"
+  },
+  //指定需要编译文件 否则默认当前目录下除了exclude之外的所有.ts, .d.ts,.tsx 文件
+  "include": ["./src/**/*.ts", "./typings/**/*"],
+   "exclude": ["node_modules", "lib"]
+}

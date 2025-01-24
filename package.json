@@ -2,16 +2,16 @@
   "name": "disney-scripts",
   "version": "1.0.0",
   "description": "npm scripts",
-  "main": "./index.js",
-  "module": "./index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "require": "./index.js",
-      "import": "./index.js"
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
     }
   },
   "scripts": {
-    "test": "node index"
+    "tsc": "tsc -p tsconfig.json --outDir dist"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,19 @@
   "bugs": {
     "url": "https://github.com/yuexihuachen/disney-scripts/issues"
   },
-  "homepage": "https://github.com/yuexihuachen/disney-scripts#readme"
+  "homepage": "https://github.com/yuexihuachen/disney-scripts#readme",
+  "dependencies": {
+    "@types/cross-spawn": "^6.0.6",
+    "@types/debug": "^4.1.12",
+    "@types/npm-which": "^3.0.3",
+    "@types/resolve": "^1.20.6",
+    "@types/which": "^3.0.4",
+    "chalk": "^4.1.2",
+    "cross-spawn": "^7.0.6",
+    "debug": "^4.4.0",
+    "npm-which": "^3.0.1",
+    "resolve": "^1.22.10",
+    "typescript": "^5.7.3",
+    "which": "^5.0.0"
+  }
 }
