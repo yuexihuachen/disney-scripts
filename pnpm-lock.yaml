@@ -23,6 +23,9 @@ importers:
       '@types/which':
         specifier: ^3.0.4
         version: 3.0.4
+      '@types/yargs-parser':
+        specifier: ^21.0.3
+        version: 21.0.3
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -44,6 +47,9 @@ importers:
       which:
         specifier: ^5.0.0
         version: 5.0.0
+      yargs-parser:
+        specifier: ^21.1.1
+        version: 21.1.1
 
 packages:
 
@@ -67,6 +73,9 @@ packages:
 
   '@types/which@3.0.4':
     resolution: {integrity: sha512-liyfuo/106JdlgSchJzXEQCVArk0CvevqPote8F8HgWgJ3dRCcTHgJIsLDuee0kxk/mhbInzIZk3QWSZJ8R+2w==}
+
+  '@types/yargs-parser@21.0.3':
+    resolution: {integrity: sha512-I4q9QU9MQv4oEOz4tAHJtNz1cwuLxn2F3xcc2iV5WdqLPpUnj30aUuxt1mAxYTG+oe8CZMV/+6rU4S4gRDzqtQ==}
 
   ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
@@ -184,6 +193,10 @@ packages:
     engines: {node: ^18.17.0 || >=20.5.0}
     hasBin: true
 
+  yargs-parser@21.1.1:
+    resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
+    engines: {node: '>=12'}
+
 snapshots:
 
   '@types/cross-spawn@6.0.6':
@@ -207,6 +220,8 @@ snapshots:
   '@types/resolve@1.20.6': {}
 
   '@types/which@3.0.4': {}
+
+  '@types/yargs-parser@21.0.3': {}
 
   ansi-styles@4.3.0:
     dependencies:
@@ -300,3 +315,5 @@ snapshots:
   which@5.0.0:
     dependencies:
       isexe: 3.1.1
+
+  yargs-parser@21.1.1: {}

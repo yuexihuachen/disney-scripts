@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node ../../dist/bin lint",
-    "format": "node ../../dist/bin format"
+    "format": "DEBUG=* node ../../dist/bin format"
   },
   "keywords": [],
   "author": "",

@@ -48,14 +48,17 @@
     *不可以赋值为undefined或null。
     */
     "strictNullChecks": false,
+    "allowJs": true,
     /**
     *指定编译出来的 JavaScript 代码的 ECMAScript 版本
     */
     "target": "ESNext",
     "baseUrl": "/",
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react",
+    "skipLibCheck": true,
   },
   //指定需要编译文件 否则默认当前目录下除了exclude之外的所有.ts, .d.ts,.tsx 文件
-  "include": ["./src/**/*.ts", "./typings/**/*"],
+  "include": ["./src/**/*", "./typings/**/*"],
    "exclude": ["node_modules", "lib"]
 }

@@ -111,15 +111,22 @@ const getUtils = (cwd = process.cwd()) => {
 
 const defaultUtils = getUtils();
 
+function utilsFor(subdir: 'client' | 'server'): ReturnType<typeof getUtils> {
+  let subDirUtils = getUtils(defaultUtils.fromRoot(subdir))
+  return subDirUtils
+}
+
 const spawnSync = (
   bin: string,
   params: string[] = [],
   options?: Parameters<typeof spawn.sync>[2],
 ) => {
+  //return 子进程的信号，如果子进程不是由于信号而终止则为 null。
   return spawn.sync(bin, params, options)
 }
 
 export const utils = {
   spawnSync,
+  utilsFor,
   ...defaultUtils
 }

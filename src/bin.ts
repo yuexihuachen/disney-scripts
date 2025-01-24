@@ -8,5 +8,5 @@ const log = debug('bin')
 const [executor, , script, ...args] = process.argv;
 
 log(executor)
-console.log(executor)
+
 runScripts(script, { args });
