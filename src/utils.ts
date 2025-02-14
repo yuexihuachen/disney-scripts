@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 import which from 'which';
 import npmExecutor from 'npm-which';
-import resolve from 'resolve';
 import spawn from 'cross-spawn';
 import debug from 'debug';
 import chalk from 'chalk';
@@ -21,10 +20,6 @@ const relative = (p1: string, p2: string = process.cwd()): string => {
 
 const getUtils = (cwd = process.cwd()) => {
   // 读取package.json文件内容和路径
-  // 返回规范化的绝对路径。
-  // const { packageJson = {}, path: pkgPath } = readPackage({
-  //   cwd: fs.realpathSync(cwd),
-  // });
   const pkgPath = path.resolve(fs.realpathSync(cwd), 'package.json');
   const packageJson = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
@@ -52,7 +47,7 @@ const getUtils = (cwd = process.cwd()) => {
     try {
         //指定当前工作目录
       process.chdir(givenCWD);
-      // 查找指定可执行文件
+      // 类似linux which命令，在 PATH 环境变量中查找指定可执行文件的第一个实例
       const pathFromWhich = which.sync(executable);
       log('first:',chalk.red(pathFromWhich))
       if (pathFromWhich) {
@@ -64,6 +59,7 @@ const getUtils = (cwd = process.cwd()) => {
       process.chdir(originalCWD);
     }
     try {
+      // 从本地或者parent目录node_modules/.bin查找可执行文件
       const npmExecutorInstance = npmExecutor(givenCWD);
       const pathFromWhich = npmExecutorInstance.sync(executable);
       log('second:',chalk.red(pathFromWhich))
@@ -75,19 +71,8 @@ const getUtils = (cwd = process.cwd()) => {
       }
     } catch (error) {
     }
-    const modPkgPath = resolve.sync(path.join(modName, 'package.json'), {
-      basedir: givenCWD,
-    });
-    log('modPkgPath:',chalk.red(modPkgPath))
-    const modPkgDir = path.dirname(modPkgPath);
-    log('modPkgDir:',chalk.red(modPkgDir))
-    const { bin } = require(modPkgPath);
-    log('bin:',chalk.red(bin))
-    const binPath = typeof bin === 'string' ? bin : bin[executable];
-    log('binPath:',chalk.red(binPath))
-    const fullPathToBin = path.join(modPkgDir, binPath);
-    log('fullPathToBin:',chalk.red(fullPathToBin))
-    return fullPath ? fullPathToBin : fullPathToBin.replace(givenCWD, '.');
+    // 没有就直接使用当前默认可执行文件
+    return modName;
   }
 
   const serverDir = fromRoot('server');
