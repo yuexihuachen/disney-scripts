@@ -1,10 +1,23 @@
 import yargsParser from 'yargs-parser';
 import path from 'path';
 import { utils } from '../utils';
+import debugFactory from 'debug';
+import chalk from 'chalk';
 
-// prettier 格式化 code
+const debug = debugFactory('format');
 
+
+/**
+ * node命令行参数
+ * node process-args.js one two=three four 
+ * output: one two=three two=three
+ */
 const args = process.argv.slice(2);
+/**
+ * 解析命令行参数
+ * 支持格式: node example.js --foo=33 --bar hello --foo-bar
+ * { _: [], foo: 33, bar: 'hello', 'foo-bar': true, fooBar: true }
+ */
 const parseArgs = yargsParser(args);
 
 const here = (p: string) => path.join(__dirname, p);
@@ -18,6 +31,8 @@ const useBuiltinConfig =
   !utils.hasFile('prettier.config.js') &&
   !utils.hasFile('.prettierrc.json') &&
   !utils.hasFile('.prettierrc.yaml');
+
+debug(chalk.red('useBuiltinConfig'), useBuiltinConfig)
 
 const config = useBuiltinConfig
   ? ['--config', hereRelative('../config/prettier.config.js')]

@@ -10,4 +10,6 @@ const config = {
   proseWrap: 'always',
 }
 
+console.log('config: prettier')
+
 module.exports = config

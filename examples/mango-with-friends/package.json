@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "DEBUG=* node ../../dist/bin format",
     "lint": "node ../../dist/bin lint",
-    "format": "DEBUG=* node ../../dist/bin format"
+    "dev": "node ../../dist/bin dev"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^9.20.1"
+  }
 }

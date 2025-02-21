@@ -32,10 +32,11 @@ function runScripts(
   const scriptPath = attemptResolve(path.join(__dirname, './scripts', script))
 
   if (!scriptPath) {
-    throw new Error(`Unknown script "${script}" - please select a script to run.`)
+    throw new Error(`Unknown script "${script}"`)
   }
 
-  const bin = utils.resolveBin('node')
+  const bin = utils.resolveBin('node');
+  console.log([scriptPath, ...args])
   const result = utils.spawnSync(bin, [scriptPath, ...args], {
     stdio: 'inherit',
     ...spawnOptions,

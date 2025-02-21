@@ -14,7 +14,7 @@ const config = {
   proseWrap: 'always',
 }
 
-debug(config);
+debug('prettier code');
 
 module.exports = config
 

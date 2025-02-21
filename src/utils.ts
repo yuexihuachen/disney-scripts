@@ -1,12 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 import which from 'which';
+import resolve from 'resolve';
 import npmExecutor from 'npm-which';
 import spawn from 'cross-spawn';
-import debug from 'debug';
-import chalk from 'chalk';
-
-const log = debug('scripts')
 
 type ResolveBinOptions = {
     executable?: string;
@@ -49,7 +46,6 @@ const getUtils = (cwd = process.cwd()) => {
       process.chdir(givenCWD);
       // 类似linux which命令，在 PATH 环境变量中查找指定可执行文件的第一个实例
       const pathFromWhich = which.sync(executable);
-      log('first:',chalk.red(pathFromWhich))
       if (pathFromWhich) {
         // realpathSync 返回规范化的绝对路径。
         return fullPath ? fs.realpathSync(pathFromWhich) : executable;
@@ -62,7 +58,6 @@ const getUtils = (cwd = process.cwd()) => {
       // 从本地或者parent目录node_modules/.bin查找可执行文件
       const npmExecutorInstance = npmExecutor(givenCWD);
       const pathFromWhich = npmExecutorInstance.sync(executable);
-      log('second:',chalk.red(pathFromWhich))
       if (pathFromWhich) {
         const realPathFromWhich = fs.realpathSync(pathFromWhich);
         return fullPath
@@ -72,7 +67,15 @@ const getUtils = (cwd = process.cwd()) => {
     } catch (error) {
     }
     // 没有就直接使用当前默认可执行文件
-    return modName;
+    const modPkgPath = resolve.sync(path.join(modName, 'package.json'), {
+      basedir: givenCWD,
+    })
+    console.log(modPkgPath)
+    const modPkgDir = path.dirname(modPkgPath)
+    const { bin } = require(modPkgPath)
+    const binPath = typeof bin === 'string' ? bin : bin[executable]
+    const fullPathToBin = path.join(modPkgDir, binPath)
+    return fullPath ? fullPathToBin : fullPathToBin.replace(givenCWD, '.')
   }
 
   const serverDir = fromRoot('server');

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "module": "esNext",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "types": ["node", "@emotion/core", "jest"],
+    "skipLibCheck": true,
+    "strictNullChecks": false, 
+    "allowImportingTsExtensions": true,
+    "target": "ESNext" 
+  },
+  "include": ["../typings/**/*", "./typings/**/*", "./src/**/*"]
+}
