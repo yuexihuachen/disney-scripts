@@ -79,12 +79,11 @@ const config = {
       allowedHosts: [
         'localhost',
         'localhost.mango.com',
-        'localhost.qa.mango.com',
-        '.mango.com',
-        '.mangoinc.com',
+        'localhost.qa.mango.com'
       ],
       port: process.env.CLIENT_PORT || 7975,
     },
+    caches: true
 };
 
 module.exports = config;
