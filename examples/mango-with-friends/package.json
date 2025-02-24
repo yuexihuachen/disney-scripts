@@ -7,12 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "DEBUG=* node ../../dist/bin format",
     "lint": "node ../../dist/bin lint",
-    "dev": "node ../../dist/bin dev"
+    "dev": "node ../../dist/bin dev",
+    "build": "node ../../dist/bin build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint": "^9.20.1"
+    "eslint": "^9.20.1",
+    "nunjucks": "^3.2.4"
   }
 }

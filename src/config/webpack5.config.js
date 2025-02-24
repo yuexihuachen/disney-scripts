@@ -61,7 +61,30 @@ const config = {
           ],
         }
       ]
-    }
+    },
+    devServer: {
+      client: {
+        overlay: false,
+        logging: 'info',
+      },
+      devMiddleware: {
+        publicPath,
+      },
+      static: {
+        directory: fromRoot('dist'),
+      },
+      historyApiFallback: true,
+      host: 'localhost',
+      hot: true,
+      allowedHosts: [
+        'localhost',
+        'localhost.mango.com',
+        'localhost.qa.mango.com',
+        '.mango.com',
+        '.mangoinc.com',
+      ],
+      port: process.env.CLIENT_PORT || 7975,
+    },
 };
 
 module.exports = config;
